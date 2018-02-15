@@ -42,7 +42,9 @@ public abstract class Sorter {
 	/**
 	 * sorts values
 	 */
-	public abstract void sort();
+	public void sort() {
+		while(oneMove());
+	}
 	/**
 	 * does one swap on values
 	 * returns true if there are still moves left to be made

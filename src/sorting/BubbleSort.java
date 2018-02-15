@@ -16,10 +16,9 @@ public class BubbleSort extends Sorter {
 				swapped = true;
 			}
 		}
+		this.moves ++;
 		return swapped;
 	}
 
-	public void sort() {
-		while(oneMove());
-	}
+	
 }
