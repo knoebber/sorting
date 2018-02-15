@@ -4,16 +4,18 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
-	static final int MAX_SIZE = 10;//the maximum random number 
+	static final int MAX_SIZE = 500;//the maximum random number 
 	
 	public static void main(String args[]) {
-		int[] test = getRandomArray(10);
-		BubbleSort bubbleSorter = new BubbleSort(test);
-		bubbleSorter.printValues();
-		bubbleSorter.sort();
-		bubbleSorter.printValues();
+		int[] test = getRandomArray(100);
+		Sorter bubbleSorter = new BubbleSort(test);
+		SortingVisualizer vis = new SortingVisualizer(bubbleSorter);
+		vis.setVisible(true);
+		vis.visualize();
 	}
-	
+	/**
+	 * generate array with random values 
+	 */
 	public static int[] getRandomArray(int size) {
 		int[] arr = new int[size];
 		Random rand = new Random();
