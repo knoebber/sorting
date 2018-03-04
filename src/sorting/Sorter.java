@@ -8,6 +8,8 @@ public abstract class Sorter {
 	//the last two indexes that were swapped
 	protected int swapA;
 	protected int swapB;
+	protected long startTime;//measure the start time and stop of the program
+	protected long stopTime;
 	
 	public Sorter(int[] vals) {
 		this.values = vals;
@@ -43,15 +45,16 @@ public abstract class Sorter {
 	 * sorts values
 	 */
 	public void sort() {
+		startTime = System.nanoTime();
 		while(oneMove());
+		stopTime = System.nanoTime();
 	}
 	/**
-	 * does one swap on values
 	 * returns true if there are still moves left to be made
 	 * returns false if values is sorted
 	 */
 	public abstract boolean oneMove();
-		
+	
 	/**
 	 * swaps values at a for values at b
 	 */
@@ -59,6 +62,18 @@ public abstract class Sorter {
 		int temp = this.values[a];
 		this.values[a] = this.values[b];
 		this.values[b] = temp;
+	}
+	 /** 
+	  * print sorting stats
+	  * 
+	  * number of moves//TODO
+	  * time elapsed
+	 */
+	public void printStats() {
+		System.out.println("Sorters name: "+this.getClass().getName());
+		System.out.println("Sorted "+this.getValues().length+" values");
+		System.out.println(((double)(stopTime-startTime)/1000000000)+" seconds elapsed");
+		System.out.println("");
 	}
 	
 }

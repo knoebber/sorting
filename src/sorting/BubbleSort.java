@@ -19,6 +19,4 @@ public class BubbleSort extends Sorter {
 		this.moves ++;
 		return swapped;
 	}
-
-	
 }
