@@ -7,21 +7,24 @@ public class Main {
 	static final int MAX_SIZE = 500; // 500;// the maximum random number
 
 	public static void main(String args[]) {
-		testSuite();
 		/*
-		 * int[] arr = getRandomArray(100); Sorter bubbleSorter = new BubbleSort(arr);
-		 * Sorter insertionSorter = new InsertionSort(arr); visualize(bubbleSorter);
-		 */
+		SortingVisualizer vis = new SortingVisualizer();
+		MergeSort merger = new MergeSort(getRandomArray(100));
+		merger.setVis(vis);
+		vis.setVisible(true);
+		merger.sort();
+		*/
+		testSuite();
 	}
 
 	public static void testSuite() {
-		int size = 60000;
+		int size = 10;
 		// set up arrays for testing
 		int[][] sortingArrays = { getRandomArray(size), getReverseOrderArray(size), getMostlySortedArray(size) };
-		String[] sortingNames = { "- Random Array- ", "Reverse Order Array", "Mostly Sorted Array" };
+		String[] sortingNames = { "Random Array", "Reverse Order Array", "Mostly Sorted Array" };
 		int nameIndex = 0;
 		for (int[] arr : sortingArrays) {
-			System.out.println(sortingNames[nameIndex++]);
+			System.out.println("--- "+sortingNames[nameIndex++]+" ---");
 			Sorter sorts[] = { 
 				new MergeSort(arr.clone()),
 				new InsertionSort(arr.clone()),
@@ -33,13 +36,13 @@ public class Main {
 			}
 		}
 	}
-
+/*
 	public static void visualize(Sorter sort) {
-		SortingVisualizer vis = new SortingVisualizer(sort);
 		vis.setVisible(true);
 		vis.visualize();
 
 	}
+	*/
 	/**
 	 * generate array with random values
 	 */

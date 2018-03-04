@@ -4,18 +4,20 @@ import java.util.Arrays;
 
 public abstract class Sorter {
 	protected int[] values;
-	protected int moves;
+	protected int moves = 0;
 	//the last two indexes that were swapped
-	protected int swapA;
-	protected int swapB;
-	protected long startTime;//measure the start time and stop of the program
-	protected long stopTime;
+	protected int swapA = -1;
+	protected int swapB = -1;
+	private long startTime;//measure the start time and stop of the program
+	private long stopTime;
+	protected SortingVisualizer vis;
 	
 	public Sorter(int[] vals) {
 		this.values = vals;
-		this.moves = 0;
-		this.swapA = -1;
-		this.swapB = -1;
+	}
+	public Sorter(int[] vals, SortingVisualizer vis) {
+		this.values = vals;
+		this.vis = vis;
 	}
 	public int getMoves() {
 		return this.moves;
@@ -46,22 +48,20 @@ public abstract class Sorter {
 	 */
 	public void sort() {
 		startTime = System.nanoTime();
-		while(oneMove());
+		this.values = this.sortVals(this.values);
 		stopTime = System.nanoTime();
 	}
 	/**
-	 * returns true if there are still moves left to be made
-	 * returns false if values is sorted
+	 * does the work for sort()
 	 */
-	public abstract boolean oneMove();
-	
+	protected abstract int[] sortVals(int vals[]);
 	/**
-	 * swaps values at a for values at b
+	 * swaps vals at a for vals at b
 	 */
-	protected void swap(int a,int b) {
-		int temp = this.values[a];
-		this.values[a] = this.values[b];
-		this.values[b] = temp;
+	protected void swap(int vals[],int a,int b) {
+		int temp = vals[a];
+		vals[a] = vals[b];
+		vals[b] = temp;
 	}
 	 /** 
 	  * print sorting stats
