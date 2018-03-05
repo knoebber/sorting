@@ -16,8 +16,6 @@ public class BubbleSort extends Sorter {
 			for (int i = 0; i < vals.length - 1; i++) {
 				if (vals[i] > vals[i + 1]) {
 					swap(vals,i, i + 1);
-					swapA = i;
-					swapB = i+i;
 					swapped = true;
 				}
 			}
