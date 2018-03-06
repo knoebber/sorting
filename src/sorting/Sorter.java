@@ -1,13 +1,10 @@
 package sorting;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class Sorter {
 	protected int[] values;
 	protected int moves = 0;
-	//contains the last indexes that were moved
-	protected ArrayList<Integer> lastMoves = new ArrayList<Integer>();
 	private long startTime;//measure the start time and stop of the program
 	private long stopTime;
 	protected SortingVisualizer vis;
@@ -24,12 +21,6 @@ public abstract class Sorter {
 	}
 	public int[] getValues() {
 		return values;
-	}
-	/**
-	 * determines whether the index was swapped on the last move
-	 */
-	public boolean indexWasSwapped(int index) {
-		return lastMoves.contains(index);
 	}
 	/**
 	 * returns the length of values
@@ -64,7 +55,7 @@ public abstract class Sorter {
 		vals[a] = vals[b];
 		vals[b] = temp;
 		if(vis!=null) 
-			vis.refresh();
+			vis.run();
 
 	}
 	 /** 
